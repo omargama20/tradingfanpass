@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Trading Fan Pass</title>
+  <meta name="description" content="Tu siguiente jugada financiera empieza aquí. Trading Fan Pass presentado por Blueberry Markets LATAM." />
+
+  <meta property="og:title" content="Trading Fan Pass" />
+  <meta property="og:description" content="Tu siguiente jugada financiera empieza aquí." />
+  <meta property="og:type" content="website" />
+
+  <style>
+    :root {
+      --bg: #03070d;
+      --bg2: #071526;
+      --blue: #1f78ff;
+      --cyan: #60d8ff;
+      --text: #ffffff;
+      --muted: #b8c4d6;
+      --line: rgba(255,255,255,0.16);
+      --card: rgba(255,255,255,0.075);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      min-height: 100%;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 20% 10%, rgba(31,120,255,0.45), transparent 32%),
+        radial-gradient(circle at 85% 15%, rgba(96,216,255,0.25), transparent 28%),
+        linear-gradient(145deg, var(--bg2), var(--bg) 68%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px 18px;
+      text-align: center;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: 860px;
+      position: relative;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      padding: 46px 26px 34px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.045));
+      box-shadow: 0 30px 90px rgba(0,0,0,0.48);
+      backdrop-filter: blur(14px);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 9px 15px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: #d8e6ff;
+      font-size: 12px;
+      letter-spacing: 1.7px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 18px var(--cyan);
+    }
+
+    h1 {
+      margin: 0 auto 18px;
+      max-width: 760px;
+      font-size: clamp(42px, 7vw, 78px);
+      line-height: 0.95;
+      letter-spacing: -3px;
+      font-weight: 800;
+    }
+
+    .gradient {
+      background: linear-gradient(90deg, #ffffff, #9edfff, #6da4ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .subtitle {
+      max-width: 650px;
+      margin: 0 auto 30px;
+      color: var(--muted);
+      font-size: clamp(17px, 2.4vw, 22px);
+      line-height: 1.45;
+    }
+
+    .soon {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 28px auto 30px;
+      max-width: 710px;
+    }
+
+    .pill {
+      padding: 15px 12px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: #dce8ff;
+      font-size: 14px;
+      line-height: 1.25;
+    }
+
+    .cta {
+      display: inline-block;
+      text-decoration: none;
+      color: #07111f;
+      background: #ffffff;
+      font-weight: 800;
+      padding: 16px 24px;
+      border-radius: 999px;
+      box-shadow: 0 14px 40px rgba(31,120,255,0.22);
+      margin-top: 2px;
+    }
+
+    .small {
+      margin: 26px auto 0;
+      max-width: 680px;
+      color: rgba(255,255,255,0.62);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .brand {
+      margin-top: 26px;
+      color: rgba(255,255,255,0.82);
+      font-size: 13px;
+      letter-spacing: 0.3px;
+    }
+
+    .brand strong {
+      color: #ffffff;
+    }
+
+    @media (max-width: 700px) {
+      body {
+        align-items: flex-start;
+        padding-top: 20px;
+      }
+
+      .card {
+        border-radius: 28px;
+        padding: 34px 18px 26px;
+      }
+
+      h1 {
+        letter-spacing: -2px;
+      }
+
+      .soon {
+        grid-template-columns: 1fr;
+      }
+
+      .pill {
+        padding: 13px 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="card">
+      <div class="eyebrow">
+        <span class="dot"></span>
+        Trading Fan Pass
+      </div>
+
+      <h1>
+        Tu siguiente jugada financiera <span class="gradient">empieza aquí.</span>
+      </h1>
+
+      <p class="subtitle">
+        Muy pronto podrás recibir acceso a contenido introductorio sobre mercados globales,
+        trading, copytrading y gestión de riesgo.
+      </p>
+
+      <div class="soon">
+        <div class="pill">Mercados globales</div>
+        <div class="pill">Trading educativo</div>
+        <div class="pill">Estrategias con riesgo controlado</div>
+      </div>
+
+      <a class="cta" href="mailto:latam@blueberrymarkets.com?subject=Trading%20Fan%20Pass">
+        Quiero saber más
+      </a>
+
+      <div class="brand">
+        Una experiencia presentada por <strong>Blueberry Markets LATAM</strong>.
+      </div>
+
+      <p class="small">
+        La información compartida es únicamente educativa y no representa asesoría financiera personalizada,
+        recomendación de inversión ni promesa de rendimiento. Operar en mercados financieros implica riesgo.
+      </p>
+    </section>
+  </main>
+</body>
+</html>
