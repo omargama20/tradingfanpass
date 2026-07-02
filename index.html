@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Trading Fan Pass</title>
+  <meta name="description" content="Tu siguiente jugada financiera empieza aquí. Trading Fan Pass te acerca a contenido introductorio sobre mercados globales, trading, copytrading y gestión de riesgo." />
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #020817;
+      --blue: #2563eb;
+      --blue-soft: #3b82f6;
+      --cyan: #60a5fa;
+      --text: #ffffff;
+      --muted: #d8e2f0;
+      --ink: #0f172a;
+      --gray: #475569;
+      --line: rgba(255,255,255,.14);
+      --formLine: #d8dee9;
+      --green: #4ade80;
+      --red: #ef4444;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Open Sans", Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1180px, calc(100% - 44px));
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero {
+      min-height: 760px;
+      position: relative;
+      overflow: hidden;
+      padding: 0 0 70px;
+      background:
+        linear-gradient(90deg, rgba(2,8,23,.96) 0%, rgba(2,8,23,.82) 44%, rgba(2,8,23,.50) 100%),
+        url("./assets/hero-football.svg") center center / cover no-repeat;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(2,8,23,.08), rgba(2,8,23,.34)),
+        radial-gradient(circle at 30% 85%, rgba(37,99,235,.18), transparent 24%);
+      pointer-events: none;
+    }
+
+    .nav {
+      height: 78px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 21px;
+      letter-spacing: -.5px;
+    }
+
+    .logo-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #0f172a, #1d4ed8);
+      border: 1px solid rgba(255,255,255,.18);
+      color: #60a5fa;
+      box-shadow: 0 12px 40px rgba(37,99,235,.25);
+      font-weight: 900;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      color: rgba(255,255,255,.88);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .nav-links a:hover { color: #60a5fa; }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 60px;
+      align-items: center;
+      padding-top: 58px;
+    }
+
+    .eyebrow {
+      color: var(--blue-soft);
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-size: 16px;
+      margin-bottom: 18px;
+    }
+
+    .eyebrow::after {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 3px;
+      background: var(--blue-soft);
+      margin-top: 10px;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 720px;
+      font-size: clamp(42px, 5.2vw, 68px);
+      line-height: 1.06;
+      letter-spacing: -2.7px;
+      font-weight: 800;
+    }
+
+    .accent { color: #3b82f6; }
+
+    .hero-copy {
+      max-width: 610px;
+      margin: 28px 0 38px;
+      font-size: 18px;
+      line-height: 1.62;
+      color: rgba(255,255,255,.88);
+    }
+
+    .hero-icons {
+      display: flex;
+      gap: 38px;
+      margin: 34px 0 42px;
+    }
+
+    .hero-icon {
+      width: 145px;
+      padding-right: 20px;
+      border-right: 1px solid rgba(255,255,255,.20);
+    }
+
+    .hero-icon:last-child { border-right: 0; }
+
+    .icon {
+      width: 54px;
+      height: 54px;
+      margin-bottom: 12px;
+      color: var(--blue-soft);
+    }
+
+    .hero-icon strong {
+      display: block;
+      font-size: 17px;
+      line-height: 1.25;
+    }
+
+    .mini-note {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,.18);
+      color: rgba(255,255,255,.92);
+      font-size: 15px;
+      line-height: 1.45;
+      max-width: 520px;
+    }
+
+    .mini-note span {
+      display: block;
+      color: var(--blue-soft);
+      font-weight: 800;
+    }
+
+    .form-card {
+      background: #ffffff;
+      color: var(--ink);
+      border-radius: 14px;
+      padding: 30px;
+      box-shadow: 0 28px 90px rgba(0,0,0,.42);
+    }
+
+    .form-card h2 {
+      margin: 0;
+      text-align: center;
+      font-size: 29px;
+      line-height: 1.15;
+      letter-spacing: -.8px;
+    }
+
+    .form-card .sub {
+      margin: 8px 0 22px;
+      color: #334155;
+      text-align: center;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    form { display: grid; gap: 12px; }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"] {
+      width: 100%;
+      height: 48px;
+      border: 1px solid var(--formLine);
+      border-radius: 7px;
+      padding: 0 14px;
+      font-family: inherit;
+      font-size: 14px;
+      color: var(--ink);
+      outline: none;
+      background: #fff;
+    }
+
+    input:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 4px rgba(37,99,235,.10);
+    }
+
+    .section-label {
+      margin: 7px 0 2px;
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .chips {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+
+    .chip input { display: none; }
+
+    .chip span {
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--formLine);
+      border-radius: 8px;
+      padding: 8px;
+      color: #334155;
+      background: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      text-align: center;
+      cursor: pointer;
+      transition: .18s ease;
+    }
+
+    .chip input:checked + span {
+      border-color: var(--blue);
+      background: #eff6ff;
+      color: #1d4ed8;
+      box-shadow: inset 0 0 0 1px var(--blue);
+    }
+
+    .consent {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin-top: 5px;
+      color: #475569;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .consent input {
+      width: 16px;
+      height: 16px;
+      margin-top: 2px;
+      flex: 0 0 auto;
+    }
+
+    .btn {
+      height: 50px;
+      margin-top: 6px;
+      border: 0;
+      border-radius: 7px;
+      background: linear-gradient(90deg, #2563eb, #1d4ed8);
+      color: #fff;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 14px 26px rgba(37,99,235,.28);
+    }
+
+    .btn:disabled {
+      opacity: .65;
+      cursor: not-allowed;
+    }
+
+    .secure {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 7px;
+      margin-top: 13px;
+      color: #64748b;
+      font-size: 12px;
+    }
+
+    .status {
+      display: none;
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 13px;
+      line-height: 1.4;
+      margin-top: 4px;
+    }
+
+    .status.success {
+      display: block;
+      background: #ecfdf5;
+      color: #047857;
+      border: 1px solid #a7f3d0;
+    }
+
+    .status.error {
+      display: block;
+      background: #fef2f2;
+      color: #b91c1c;
+      border: 1px solid #fecaca;
+    }
+
+    .benefits {
+      background: #f8fafc;
+      color: var(--ink);
+      padding: 34px 0;
+    }
+
+    .benefit-card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 20px 60px rgba(15,23,42,.08);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      padding: 32px;
+    }
+
+    .benefit-item {
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      gap: 18px;
+      padding: 0 26px;
+      border-right: 1px solid #e2e8f0;
+    }
+
+    .benefit-item:first-child { padding-left: 0; }
+    .benefit-item:last-child { border-right: 0; padding-right: 0; }
+
+    .round-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: #eff6ff;
+      color: var(--blue);
+      font-size: 28px;
+    }
+
+    .benefit-item h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .benefit-item p {
+      margin: 0;
+      color: var(--gray);
+      font-size: 14px;
+      line-height: 1.52;
+    }
+
+    .strategies {
+      background: #06101f;
+      color: #fff;
+      padding: 64px 0 40px;
+    }
+
+    .strategy-grid {
+      display: grid;
+      grid-template-columns: .80fr 1.55fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .blue-label {
+      color: var(--blue-soft);
+      font-size: 13px;
+      letter-spacing: 1.3px;
+      text-transform: uppercase;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .strategy-copy h2 {
+      margin: 0 0 18px;
+      font-size: clamp(30px, 3.6vw, 44px);
+      line-height: 1.14;
+      letter-spacing: -1.2px;
+    }
+
+    .strategy-copy p {
+      margin: 0;
+      max-width: 450px;
+      color: rgba(255,255,255,.82);
+      line-height: 1.62;
+    }
+
+    .strategy-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .strategy-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 250px;
+      background:
+        radial-gradient(circle at 86% 16%, rgba(37,99,235,.35), transparent 30%),
+        linear-gradient(135deg, rgba(15,23,42,.92), rgba(2,8,23,.98));
+      border: 1px solid rgba(96,165,250,.22);
+      box-shadow: 0 18px 55px rgba(0,0,0,.28);
+    }
+
+    .strategy-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(145deg, transparent 0%, rgba(37,99,235,.12) 100%);
+      pointer-events: none;
+    }
+
+    .strategy-card > * { position: relative; z-index: 2; }
+
+    .strategy-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .strategy-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 11px;
+      display: grid;
+      place-items: center;
+      background: rgba(37,99,235,.18);
+      border: 1px solid rgba(96,165,250,.50);
+      color: #60a5fa;
+      font-size: 24px;
+    }
+
+    .strategy-card h3 {
+      margin: 0;
+      font-size: 19px;
+      letter-spacing: -.3px;
+    }
+
+    .metric {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 12px;
+      padding: 11px 0;
+      border-bottom: 1px solid rgba(255,255,255,.14);
+      color: rgba(255,255,255,.84);
+      font-size: 13px;
+    }
+
+    .metric:last-child { border-bottom: 0; }
+
+    .metric strong {
+      color: var(--green);
+      font-size: 22px;
+      letter-spacing: -.3px;
+    }
+
+    .metric .dd {
+      color: #ef4444;
+    }
+
+    .risk-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      margin-top: 32px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 14px;
+      overflow: hidden;
+      background: rgba(255,255,255,.04);
+    }
+
+    .risk-item {
+      display: grid;
+      grid-template-columns: 50px 1fr;
+      gap: 16px;
+      align-items: center;
+      padding: 24px;
+      border-right: 1px solid rgba(255,255,255,.12);
+    }
+
+    .risk-item:last-child { border-right: 0; }
+
+    .risk-icon {
+      color: #3b82f6;
+      font-size: 30px;
+    }
+
+    .risk-item h3 {
+      margin: 0 0 6px;
+      font-size: 16px;
+    }
+
+    .risk-item p {
+      margin: 0;
+      color: rgba(255,255,255,.70);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .pitch {
+      background:
+        linear-gradient(90deg, rgba(2,8,23,.97) 0%, rgba(2,8,23,.82) 52%, rgba(2,8,23,.55) 100%),
+        url("./assets/pitch-bg.svg") center center / cover no-repeat;
+      padding: 78px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pitch-content {
+      max-width: 650px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .pitch h2 {
+      margin: 0 0 22px;
+      font-size: clamp(32px, 4vw, 48px);
+      line-height: 1.13;
+      letter-spacing: -1.3px;
+    }
+
+    .line {
+      width: 52px;
+      height: 3px;
+      background: var(--blue-soft);
+      margin-bottom: 22px;
+    }
+
+    .pitch p {
+      margin: 0;
+      max-width: 620px;
+      color: rgba(255,255,255,.84);
+      font-size: 17px;
+      line-height: 1.55;
+    }
+
+    .access {
+      background: #fff;
+      color: var(--ink);
+      padding: 50px 0 54px;
+      text-align: center;
+    }
+
+    .access h2 {
+      margin: 0 0 34px;
+      font-size: 22px;
+      letter-spacing: -.4px;
+    }
+
+    .access-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .access-item {
+      padding: 0 26px;
+      border-right: 1px solid #e2e8f0;
+    }
+
+    .access-item:last-child { border-right: 0; }
+    .access-item .round-icon { margin: 0 auto 16px; }
+
+    .access-item h3 {
+      font-size: 16px;
+      margin: 0 0 10px;
+      line-height: 1.35;
+    }
+
+    .access-item p {
+      margin: 0;
+      color: #64748b;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .footer {
+      background: #020817;
+      color: rgba(255,255,255,.76);
+      padding: 34px 0;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 28px;
+      align-items: center;
+      padding-bottom: 26px;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #fff;
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    .footer p {
+      margin: 0;
+      color: rgba(255,255,255,.70);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .disclaimer {
+      margin-top: 20px;
+      text-align: center;
+      color: rgba(255,255,255,.58);
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    @media (max-width: 1080px) {
+      .strategy-grid { grid-template-columns: 1fr; }
+      .strategy-copy p { max-width: 720px; }
+      .strategy-cards { grid-template-columns: 1fr; }
+      .risk-row { grid-template-columns: 1fr 1fr; }
+      .risk-item:nth-child(2) { border-right: 0; }
+      .risk-item:nth-child(1),
+      .risk-item:nth-child(2) { border-bottom: 1px solid rgba(255,255,255,.12); }
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 34px;
+      }
+
+      .form-card { max-width: 560px; }
+
+      .benefit-card {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .benefit-item {
+        border-right: 0;
+        border-bottom: 1px solid #e2e8f0;
+        padding: 0 0 24px;
+      }
+
+      .benefit-item:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+      }
+
+      .access-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px 0;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .footer-brand { justify-content: center; }
+    }
+
+    @media (max-width: 620px) {
+      .container { width: min(100% - 28px, 1180px); }
+
+      .hero {
+        padding-bottom: 44px;
+        background:
+          linear-gradient(180deg, rgba(2,8,23,.96) 0%, rgba(2,8,23,.82) 58%, rgba(2,8,23,.72) 100%),
+          url("./assets/hero-football.svg") center top / cover no-repeat;
+      }
+
+      .nav {
+        height: auto;
+        padding: 18px 0;
+      }
+
+      .nav-links { display: none; }
+      .hero-grid { padding-top: 34px; }
+      h1 { letter-spacing: -1.7px; }
+
+      .hero-copy {
+        font-size: 16px;
+        margin: 20px 0 26px;
+      }
+
+      .hero-icons {
+        gap: 18px;
+        justify-content: space-between;
+      }
+
+      .hero-icon {
+        max-width: 110px;
+        padding-right: 10px;
+      }
+
+      .hero-icon strong { font-size: 13px; }
+      .icon { width: 42px; height: 42px; }
+      .form-card { padding: 22px; }
+      .chips { grid-template-columns: 1fr; }
+      .benefit-item { grid-template-columns: 54px 1fr; }
+      .risk-row { grid-template-columns: 1fr; }
+
+      .risk-item,
+      .risk-item:nth-child(2) {
+        border-right: 0;
+        border-bottom: 1px solid rgba(255,255,255,.12);
+      }
+
+      .risk-item:last-child { border-bottom: 0; }
+      .access-grid { grid-template-columns: 1fr; }
+
+      .access-item {
+        border-right: 0;
+        border-bottom: 1px solid #e2e8f0;
+        padding-bottom: 28px;
+      }
+
+      .access-item:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <section class="hero">
+    <div class="container">
+      <header class="nav">
+        <div class="logo">
+          <div class="logo-mark">TF</div>
+          <div>Trading Fan <span class="accent">Pass</span></div>
+        </div>
+
+        <nav class="nav-links">
+          <a href="#educacion">Educación</a>
+          <a href="#estrategias">Estrategias</a>
+          <a href="#formulario">Contacto</a>
+        </nav>
+      </header>
+
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">Trading Fan Pass</div>
+
+          <h1>Tu siguiente jugada financiera <span class="accent">empieza aquí.</span></h1>
+
+          <p class="hero-copy">
+            Accede a contenido introductorio sobre mercados globales, trading,
+            copytrading y gestión de riesgo, explicado de forma simple para quienes
+            quieren empezar a entender el mundo financiero.
+          </p>
+
+          <div class="hero-icons">
+            <div class="hero-icon">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M2 12h20M12 2c3 3 4 6 4 10s-1 7-4 10M12 2c-3 3-4 6-4 10s1 7 4 10"></path>
+              </svg>
+              <strong>Mercados globales</strong>
+            </div>
+
+            <div class="hero-icon">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M4 19V5M4 19h16"></path>
+                <path d="M7 16l4-4 3 3 5-7"></path>
+              </svg>
+              <strong>Trading educativo</strong>
+            </div>
+
+            <div class="hero-icon">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M16 11a4 4 0 1 0-8 0"></path>
+                <path d="M3 21a7 7 0 0 1 14 0"></path>
+                <path d="M17 10a3 3 0 0 1 0 6"></path>
+                <path d="M21 21a6 6 0 0 0-4-5"></path>
+              </svg>
+              <strong>Copytrading & estrategias</strong>
+            </div>
+          </div>
+
+          <div class="mini-note">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.9">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path>
+            </svg>
+            <div>
+              Educación. Estrategia. Gestión de riesgo.
+              <span>No es suerte. Es preparación.</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="form-card" id="formulario">
+          <h2>Déjanos tus datos</h2>
+          <p class="sub">
+            y sé de los primeros en recibir información.<br>
+            Un asesor se pondrá en contacto contigo.
+          </p>
+
+          <form id="fanpassForm" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="TU_ACCESS_KEY_WEB3FORMS">
+            <input type="hidden" name="subject" value="Nuevo lead - Trading Fan Pass">
+            <input type="hidden" name="from_name" value="Trading Fan Pass">
+
+            <input type="text" name="nombre" placeholder="Nombre completo" required>
+            <input type="email" name="email" placeholder="Correo electrónico" required>
+            <input type="tel" name="whatsapp" placeholder="WhatsApp" required>
+
+            <div class="section-label">¿Cuál es tu nivel de experiencia?</div>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="experiencia" value="Sin experiencia" required><span>Sin experiencia</span></label>
+              <label class="chip"><input type="radio" name="experiencia" value="Principiante"><span>Principiante</span></label>
+              <label class="chip"><input type="radio" name="experiencia" value="Intermedio"><span>Intermedio</span></label>
+              <label class="chip"><input type="radio" name="experiencia" value="Avanzado"><span>Avanzado</span></label>
+            </div>
+
+            <div class="section-label">¿Qué te interesa más?</div>
+            <div class="chips">
+              <label class="chip"><input type="checkbox" name="interes[]" value="Trading"><span>Trading</span></label>
+              <label class="chip"><input type="checkbox" name="interes[]" value="Copytrading"><span>Copytrading</span></label>
+              <label class="chip"><input type="checkbox" name="interes[]" value="Educación"><span>Educación</span></label>
+              <label class="chip"><input type="checkbox" name="interes[]" value="Invertir sin operar"><span>Invertir sin operar</span></label>
+            </div>
+
+            <label class="consent">
+              <input type="checkbox" name="consentimiento" required>
+              <span>
+                Acepto recibir información educativa sobre mercados globales,
+                trading, copytrading y gestión de riesgo.
+              </span>
+            </label>
+
+            <button class="btn" id="submitBtn" type="submit">
+              Quiero recibir información
+            </button>
+
+            <div id="formStatus" class="status"></div>
+          </form>
+
+          <div class="secure">🔒 Tu información está protegida.</div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="benefits" id="educacion">
+    <div class="container">
+      <div class="benefit-card">
+        <div class="benefit-item">
+          <div class="round-icon">🌐</div>
+          <div>
+            <h3>Mercados globales</h3>
+            <p>Conoce qué activos se pueden operar, desde divisas e índices hasta oro y otros instrumentos financieros.</p>
+          </div>
+        </div>
+
+        <div class="benefit-item">
+          <div class="round-icon">🎓</div>
+          <div>
+            <h3>Trading educativo</h3>
+            <p>Aprende los conceptos base para entender cómo se mueven los mercados, sin promesas irreales ni lenguaje complicado.</p>
+          </div>
+        </div>
+
+        <div class="benefit-item">
+          <div class="round-icon">👥</div>
+          <div>
+            <h3>Copytrading & estrategias</h3>
+            <p>Explora alternativas para participar en mercados globales a través de estrategias y herramientas pensadas para distintos perfiles.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="strategies" id="estrategias">
+    <div class="container">
+      <div class="strategy-grid">
+        <div class="strategy-copy">
+          <div class="blue-label">Copytrading & gestión de riesgo</div>
+          <h2>Estrategias reales. <span class="accent">Resultados transparentes.</span></h2>
+          <p>
+            Descubre y sigue estrategias con métricas claras. Diversifica, gestiona el riesgo
+            y toma decisiones con información visible.
+          </p>
+        </div>
+
+        <div class="strategy-cards">
+          <article class="strategy-card">
+            <div class="strategy-head">
+              <div class="strategy-icon">📊</div>
+              <h3>NAS Manual</h3>
+            </div>
+            <div class="metric"><span>Rendimiento total</span><strong>+176.13%</strong></div>
+            <div class="metric"><span>Rendimiento mensual</span><strong>5.96%</strong></div>
+            <div class="metric"><span>Drawdown</span><strong class="dd">39.66%</strong></div>
+          </article>
+
+          <article class="strategy-card">
+            <div class="strategy-head">
+              <div class="strategy-icon">📈</div>
+              <h3>IQQ3 - NDX100</h3>
+            </div>
+            <div class="metric"><span>Rendimiento total</span><strong>+42.82%</strong></div>
+            <div class="metric"><span>Rendimiento mensual</span><strong>4.52%</strong></div>
+            <div class="metric"><span>Drawdown</span><strong class="dd">2.90%</strong></div>
+          </article>
+
+          <article class="strategy-card">
+            <div class="strategy-head">
+              <div class="strategy-icon">🔺</div>
+              <h3>Aurum Edge</h3>
+            </div>
+            <div class="metric"><span>Rendimiento total</span><strong>+811.06%</strong></div>
+            <div class="metric"><span>Rendimiento mensual</span><strong>9.99%</strong></div>
+            <div class="metric"><span>Drawdown</span><strong class="dd">17.04%</strong></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="risk-row">
+        <div class="risk-item">
+          <div class="risk-icon">🛡️</div>
+          <div>
+            <h3>Gestión de riesgo</h3>
+            <p>Protege tu capital con herramientas y estrategias probadas.</p>
+          </div>
+        </div>
+
+        <div class="risk-item">
+          <div class="risk-icon">◔</div>
+          <div>
+            <h3>Diversificación inteligente</h3>
+            <p>Accede a múltiples estrategias para reducir riesgos.</p>
+          </div>
+        </div>
+
+        <div class="risk-item">
+          <div class="risk-icon">♛</div>
+          <div>
+            <h3>Traders verificados</h3>
+            <p>Estrategias con historial y métricas claras.</p>
+          </div>
+        </div>
+
+        <div class="risk-item">
+          <div class="risk-icon">⚡</div>
+          <div>
+            <h3>Monitoreo constante</h3>
+            <p>Rendimientos y supervisión actualizada.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pitch">
+    <div class="container">
+      <div class="pitch-content">
+        <div class="blue-label">No todo se juega en la cancha</div>
+        <h2>También existen decisiones, estrategia y gestión de riesgo <span class="accent">fuera del partido.</span></h2>
+        <div class="line"></div>
+        <p>
+          Trading Fan Pass nace para acercarte al mundo de los mercados globales
+          de una forma simple, educativa y responsable.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="access">
+    <div class="container">
+      <h2>Muy pronto podrás acceder a:</h2>
+
+      <div class="access-grid">
+        <div class="access-item">
+          <div class="round-icon">📘</div>
+          <h3>Guía introductoria de trading</h3>
+          <p>Material educativo para dar tus primeros pasos en los mercados.</p>
+        </div>
+
+        <div class="access-item">
+          <div class="round-icon">🛡️</div>
+          <h3>Conceptos básicos de gestión de riesgo</h3>
+          <p>Entiende cómo proteger tu capital y mantener una gestión responsable.</p>
+        </div>
+
+        <div class="access-item">
+          <div class="round-icon">📈</div>
+          <h3>Información sobre copytrading</h3>
+          <p>Descubre alternativas para participar en mercados sin necesidad de operar solo.</p>
+        </div>
+
+        <div class="access-item">
+          <div class="round-icon">🎧</div>
+          <h3>Opciones para hablar con un asesor</h3>
+          <p>Conecta con nuestro equipo y resuelve tus dudas de forma personalizada.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo-mark">TF</div>
+          Trading Fan <span class="accent">Pass</span>
+        </div>
+
+        <p>
+          Somos una iniciativa independiente dedicada a la educación financiera.
+          Nuestro objetivo es brindar contenido claro, imparcial y accesible para
+          ayudarte a comprender mejor los mercados.
+        </p>
+      </div>
+
+      <div class="disclaimer">
+        La información compartida es únicamente educativa y no representa asesoría financiera personalizada,
+        recomendación de inversión, intermediación financiera ni promesa de rendimiento.
+        Operar en mercados financieros implica riesgo. Los rendimientos mostrados son históricos o ilustrativos
+        y no garantizan resultados futuros.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const form = document.getElementById("fanpassForm");
+    const statusBox = document.getElementById("formStatus");
+    const submitBtn = document.getElementById("submitBtn");
+
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const key = form.querySelector('input[name="access_key"]').value;
+
+      if (!key || key === "TU_ACCESS_KEY_WEB3FORMS") {
+        statusBox.className = "status error";
+        statusBox.textContent = "Falta conectar la access key de Web3Forms.";
+        return;
+      }
+
+      const intereses = form.querySelectorAll('input[name="interes[]"]:checked');
+
+      if (intereses.length === 0) {
+        statusBox.className = "status error";
+        statusBox.textContent = "Selecciona al menos una opción en “¿Qué te interesa más?”.";
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Enviando...";
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: formData
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          form.reset();
+          statusBox.className = "status success";
+          statusBox.textContent = "Listo. Recibimos tus datos correctamente. Un asesor se pondrá en contacto contigo.";
+        } else {
+          statusBox.className = "status error";
+          statusBox.textContent = "No se pudo enviar el formulario. Intenta de nuevo.";
+        }
+      } catch (error) {
+        statusBox.className = "status error";
+        statusBox.textContent = "Hubo un problema de conexión. Intenta de nuevo.";
+      }
+
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Quiero recibir información";
+    });
+  </script>
+</body>
+</html>
