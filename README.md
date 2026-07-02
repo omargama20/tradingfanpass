@@ -1,19 +1,25 @@
-# Trading Fan Pass Landing
+# Trading Fan Pass - GitHub Pages
 
-Landing estática lista para GitHub Pages.
+Estructura correcta:
 
-Archivos:
-- index.html
-- CNAME
+/
+├── index.html
+├── CNAME
+└── assets/
+    ├── hero-football.svg
+    ├── pitch-bg.svg
+    └── favicon.svg
 
-Dominio:
-https://tradingfanpass.com
+## Web3Forms
 
-Pasos rápidos:
-1. Crear repo en GitHub.
-2. Subir index.html y CNAME a la raíz del repo.
-3. Ir a Settings > Pages.
-4. En Source seleccionar Deploy from branch.
-5. Branch: main / root.
-6. En Custom domain poner tradingfanpass.com.
-7. En tu proveedor de dominio configurar DNS para GitHub Pages.
+En `index.html`, busca:
+
+TU_ACCESS_KEY_WEB3FORMS
+
+y reemplázalo por tu key real.
+
+## Dominio
+
+El archivo `CNAME` debe contener:
+
+tradingfanpass.com
